@@ -3,7 +3,9 @@ import neopixel
 import time
 
 maxPixels = 12
-pixels = neopixel.NeoPixel(board.D18, maxPixels)
+pixelsPin = board.D18
+ORDER = neopixel.RGB
+pixels = neopixel.NeoPixel(pixelsPin, maxPixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 back = [0,1,2,3,4,5,6,7,8,9,10,11]
 mid = [12,13,14,15,16,17,18,19,20,21,22,23]
@@ -17,21 +19,8 @@ top = [0,1,10,11,12,13,22,23,24,25,34,35]
 center = [2,3,8,9,14,15,20,21,26,27,32,33]
 bot = [4,5,6,7,16,17,18,19,28,29,30,31]
 
-sections = [back, mid, front]
+sections = top + center + bot
 
-tempPixels = []
-
-for i in top:
-	if i < maxPixels:
-		tempPixels.append(pixels[i])
-for i in center:
-	if i < maxPixels:
-		tempPixels.append(pixels[i])
-for i in bot:
-	if i < maxPixels:
-		tempPixels.append(pixels[i])
-
-pixels = tempPixels
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
@@ -57,9 +46,9 @@ def wheel(pos):
  
 def rainbow_cycle(wait):
     for j in range(255):
-        for i in range(num_pixels):
-            pixel_index = (i * 256 // num_pixels) + j
-            pixels[i] = wheel(pixel_index & 255)
+        for i in range(maxPixels):
+            pixel_index = (i * 256 // maxPixels) + j
+            pixels[sections[i]] = wheel(pixel_index & 255)
         pixels.show()
         time.sleep(wait)
  
