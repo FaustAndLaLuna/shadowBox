@@ -22,11 +22,14 @@ sections = [back, mid, front]
 tempPixels = []
 
 for i in top:
-	tempPixels.append(pixels[i])
+	if i < maxPixels:
+		tempPixels.append(pixels[i])
 for i in center:
-	tempPixels.append(pixels[i])
+	if i < maxPixels:
+		tempPixels.append(pixels[i])
 for i in bot:
-	tempPixels.append(pixels[i])
+	if i < maxPixels:
+		tempPixels.append(pixels[i])
 
 pixels = tempPixels
 
