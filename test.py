@@ -21,6 +21,9 @@ bot = [4,5,6,7,16,17,18,19,28,29,30,31]
 
 sections = top + center + bot
 
+for i in sections:
+	if i >= maxPixels:
+		sections.remove(i)
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
