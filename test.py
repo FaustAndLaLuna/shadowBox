@@ -19,14 +19,22 @@ top = [0,1,10,11,12,13,22,23,24,25,34,35]
 center = [2,3,8,9,14,15,20,21,26,27,32,33]
 bot = [4,5,6,7,16,17,18,19,28,29,30,31]
 
-sections = top + center + bot
 toRemove = []
+section1 = top
+section2 = center
+section3 = bot
 
-for i in sections:
+for i in range(0, 100):
 	if i >= maxPixels:
 		toRemove.append(i)
 for i in toRemove:
-	sections.remove(i)
+	if i in section1:
+		section1.remove(i)
+	if i in section2:
+		section2.remove(i)
+	if i in section3:
+		section3.remove(i)
+sections = [section1, section2, section3]
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
@@ -49,36 +57,41 @@ def wheel(pos):
         b = int(255 - pos * 3)
     return (r, g, b) if ORDER in (neopixel.RGB, neopixel.GRB) else (r, g, b, 0)
  
+def applyToSection(section, color):
+	for pixNum in section:
+		pixels[pixNum] = color
+
  
 def rainbow_cycle(wait):
     for j in range(255):
-        for i in range(maxPixels):
-            pixel_index = (i * 256 // maxPixels) + j
-            pixels[sections[i]] = wheel(pixel_index & 255)
+        for i in range(3):
+            pixel_index = (i * 256 // 3) + j
+            applyToSection(sections[i], wheel(pixel_index&255))
+            #pixels[sections[i]] = wheel(pixel_index & 255)
         pixels.show()
         time.sleep(wait)
  
  
 while True:
     # Comment this line out if you have RGBW/GRBW NeoPixels
-    pixels.fill((255, 0, 0))
+    #pixels.fill((255, 0, 0))
     # Uncomment this line if you have RGBW/GRBW NeoPixels
     # pixels.fill((255, 0, 0, 0))
-    pixels.show()
-    time.sleep(1)
+    #pixels.show()
+    #time.sleep(1)
  
     # Comment this line out if you have RGBW/GRBW NeoPixels
-    pixels.fill((0, 255, 0))
+    #pixels.fill((0, 255, 0))
     # Uncomment this line if you have RGBW/GRBW NeoPixels
     # pixels.fill((0, 255, 0, 0))
-    pixels.show()
-    time.sleep(1)
+    #pixels.show()
+    #time.sleep(1)
  
     # Comment this line out if you have RGBW/GRBW NeoPixels
-    pixels.fill((0, 0, 255))
+    #pixels.fill((0, 0, 255))
     # Uncomment this line if you have RGBW/GRBW NeoPixels
     # pixels.fill((0, 0, 255, 0))
     pixels.show()
-    time.sleep(1)
+    #time.sleep(1)
  
     rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
