@@ -20,9 +20,9 @@ center = [2,3,8,9,14,15,20,21,26,27,32,33]
 bot = [4,5,6,7,16,17,18,19,28,29,30,31]
 
 toRemove = []
-section1 = top
-section2 = center
-section3 = bot
+section1 = left
+section2 = middle
+section3 = right
 
 for i in range(0, 100):
 	if i >= maxPixels:
