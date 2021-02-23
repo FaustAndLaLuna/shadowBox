@@ -20,10 +20,13 @@ center = [2,3,8,9,14,15,20,21,26,27,32,33]
 bot = [4,5,6,7,16,17,18,19,28,29,30,31]
 
 sections = top + center + bot
+toRemove = []
 
 for i in sections:
 	if i >= maxPixels:
-		sections.remove(i)
+		toRemove.append(i)
+for i in toRemove:
+	sections.remove(i)
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
