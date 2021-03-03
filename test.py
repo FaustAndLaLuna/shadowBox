@@ -85,15 +85,15 @@ def transitionAllToColor(startColor, endColor, totalTime):
         time.sleep(.045)
 
 def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, startColor2, endColor2, totalTime):
-    rDelta0 = endColor0[0] - startColor0[0]) / (totalTime/50)
-    gDelta0 = endColor0[1] - startColor0[1]) / (totalTime/50)
-    bDelta0 = endColor0[2] - startColor0[2]) / (totalTime/50)
-    rDelta1 = endColor1[0] - startColor1[0]) / (totalTime/50)
-    gDelta1 = endColor1[1] - startColor1[1]) / (totalTime/50)
-    bDelta1 = endColor1[2] - startColor1[2]) / (totalTime/50)
-    rDelta2 = endColor2[0] - startColor2[0]) / (totalTime/50)
-    gDelta2 = endColor2[1] - startColor2[1]) / (totalTime/50)
-    bDelta2 = endColor2[2] - startColor2[2]) / (totalTime/50)
+    rDelta0 = endColor0[0] - startColor0[0]) / (totalTime/50
+    gDelta0 = endColor0[1] - startColor0[1]) / (totalTime/50
+    bDelta0 = endColor0[2] - startColor0[2]) / (totalTime/50
+    rDelta1 = endColor1[0] - startColor1[0]) / (totalTime/50
+    gDelta1 = endColor1[1] - startColor1[1]) / (totalTime/50
+    bDelta1 = endColor1[2] - startColor1[2]) / (totalTime/50
+    rDelta2 = endColor2[0] - startColor2[0]) / (totalTime/50
+    gDelta2 = endColor2[1] - startColor2[1]) / (totalTime/50
+    bDelta2 = endColor2[2] - startColor2[2]) / (totalTime/50
 
     rStarting0 = startColor0[0]
     gStarting0 = startColor0[1]
