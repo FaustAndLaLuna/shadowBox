@@ -74,7 +74,7 @@ def transitionAllToColor(startColor, endColor, totalTime):
     rDelta = int((endColor[0] - startColor[0]) / totalTime)
     gDelta = int((endColor[1] - startColor[1]) / totalTime)
     bDelta = int((endColor[2] - startColor[2]) / totalTime)
-    color = startColor
+    color = list(startColor)
     for i in range(0, totalTime):
         color[0] += rDelta
         color[1] += gDelta
@@ -93,9 +93,9 @@ def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, st
     rDelta2 = int((endColor2[0] - startColor2[0]) / totalTime)
     gDelta2 = int((endColor2[1] - startColor2[1]) / totalTime)
     bDelta2 = int((endColor2[2] - startColor2[2]) / totalTime)
-    color0 = startColor0
-    color1 = startColor1
-    color2 = startColor2
+    color0 = list(startColor0)
+    color1 = list(startColor1)
+    color2 = list(startColor2)
     for i in range(0, totalTime):
         color0[0] += rDelta0
         color0[1] += gDelta0
