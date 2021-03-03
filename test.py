@@ -139,14 +139,18 @@ def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halft
     print(milliseconds)
 
 while True:
-    pixels.fill((125,255,0))
-    pixels.show()
-    time.sleep(1)
-    rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
-    pingpongAll((255,0,0), (0,255,0), 1000)
+    #pixels.fill((125,255,0))
+    #pixels.show()
+    #time.sleep(1)
+    #rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
+    #pingpongAll((255,0,0), (0,255,0), 1000)
     pingpongSections( (255, 0, 0), (0,255, 0),
         (200,0,0), (0, 255, 0),
         (150,0,0), (0, 255, 0),
+        1000)
+    pingpongSections( (255, 0, 0), (0,255, 0),
+        (160,0,80), (0, 255, 0),
+        (80,0,160), (0, 255, 0),
         1000)
 
 
