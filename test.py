@@ -125,11 +125,15 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 def pingpongAll(startingColor, endColor, time):
+    print("pingAll")
     transitionAllToColor(startingColor, endColor, time)
+    print("pongAll")
     transitionAllToColor(endColor, startingColor, time)
 
 def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, time):
+    print("pingSections")
     transitionSectionsToColor(sColor1,eColor1,sColor2,eColor2,sColor3,eColor3,time)
+    print("pongSections")
     transitionSectionsToColor(eColor1,sColor1,eColor2,sColor2,eColor3,sColor3,time)
 
 while True:
