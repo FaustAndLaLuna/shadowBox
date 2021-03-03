@@ -125,8 +125,9 @@ def rainbow_cycle(wait):
             #pixels[sections[i]] = wheel(pixel_index & 255)
         pixels.show()
         time.sleep(wait)
+    milliseconds -= int( time.time() * 1000 )
     print(milliseconds)
-    
+
 
 def pingpongAll(startingColor, endColor, halftime):
     print(halftime)
