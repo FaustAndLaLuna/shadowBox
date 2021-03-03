@@ -106,9 +106,9 @@ def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, st
         color2[0] += rDelta2
         color2[1] += gDelta2
         color2[2] += bDelta2
-        applyToSection[section1, color0]
-        applyToSection[section2, color1]
-        applyToSection[section3, color2]
+        applyToSection(section1, color0)
+        applyToSection(section2, color1)
+        applyToSection(section3, color2)
         pixels.show()
         time.sleep(.001)
 ############################################################################
