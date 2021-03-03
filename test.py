@@ -80,10 +80,10 @@ def transitionAllToColor(startColor, endColor, totalTime):
     print(bDelta)
     for i in range(0, totalTime):
         print(color)
-        color[0] += rDelta
-        color[1] += gDelta
-        color[2] += bDelta
-        applyToAll(color)
+        color[0] = rDelta
+        color[1] = gDelta
+        color[2] = bDelta
+        applyToAll((int(color[0]), int(color[1]), int(color[2])))
         pixels.show()
         time.sleep(.001)
 
