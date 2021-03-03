@@ -82,7 +82,7 @@ def transitionAllToColor(startColor, endColor, totalTime):
         applyToAll((int(rStarting + rDelta * i),int(gStarting + gDelta * i),int(bStarting + bDelta * i)))
         # applyToAll((int(color[0]), int(color[1]), int(color[2])))
         pixels.show()
-        time.sleep(.0001)
+        time.sleep(.05)
 
 def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, startColor2, endColor2, totalTime):
     rDelta0 = int((endColor0[0] - startColor0[0]) / totalTime)
