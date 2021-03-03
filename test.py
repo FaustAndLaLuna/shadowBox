@@ -71,16 +71,16 @@ def applyToSection(section, color):
 		pixels[pixNum] = color
  
 def transitionAllToColor(startColor, endColor, totalTime):
-    rDelta = math.floor((endColor[0] - startColor[0]) / (totalTime/50))
-    gDelta = math.floor((endColor[1] - startColor[1]) / (totalTime/50))
-    bDelta = math.floor((endColor[2] - startColor[2]) / (totalTime/50))
-    color = list(startColor)
+    rDelta = (endColor[0] - startColor[0]) / (totalTime/50)
+    gDelta = (endColor[1] - startColor[1]) / (totalTime/50)
+    bDelta = (endColor[2] - startColor[2]) / (totalTime/50)
+    rStarting = startColor[0]
+    gStarting = startColor[1]
+    bStarting = startColor[2]
+
     for i in range(0, int(totalTime/50)):
-        color[0] += rDelta
-        color[1] += gDelta
-        color[2] += bDelta
-        print(color)
-        applyToAll((int(color[0]), int(color[1]), int(color[2])))
+        applyToAll((int(rStarting + rDelta * i),int(gStarting + gDelta * i),int(bStarting + bDelta * i)))
+        # applyToAll((int(color[0]), int(color[1]), int(color[2])))
         pixels.show()
         time.sleep(.0001)
 
