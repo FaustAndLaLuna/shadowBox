@@ -71,9 +71,9 @@ def applyToSection(section, color):
 		pixels[pixNum] = color
  
 def transitionAllToColor(startColor, endColor, totalTime):
-    rDelta = (endColor[0] - startColor[0]) / (totalTime/50)
-    gDelta = (endColor[1] - startColor[1]) / (totalTime/50)
-    bDelta = (endColor[2] - startColor[2]) / (totalTime/50)
+    rDelta = (endColor[0] - startColor[0]) // (totalTime/50)
+    gDelta = (endColor[1] - startColor[1]) // (totalTime/50)
+    bDelta = (endColor[2] - startColor[2]) // (totalTime/50)
     color = list(startColor)
     for i in range(0, int(totalTime/50)):
         color[0] += rDelta
@@ -136,9 +136,7 @@ def pingpongAll(startingColor, endColor, halftime):
     print(milliseconds)
 
 def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, time):
-    print("pingSections")
     transitionSectionsToColor(sColor1,eColor1,sColor2,eColor2,sColor3,eColor3,time)
-    print("pongSections")
     transitionSectionsToColor(eColor1,sColor1,eColor2,sColor2,eColor3,sColor3,time)
 
 while True:
