@@ -104,7 +104,6 @@ def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, st
     rStarting2 = startColor2[0]
     gStarting2 = startColor2[1]
     bStarting2 = startColor2[2]
-    
 
     for i in range(0, totalTime//50):
         applyToSection(section1, (int(rStarting0 + rDelta0 * i),int(gStarting0 + gDelta0 * i),int(bStarting0 + bDelta0 * i)))
@@ -146,8 +145,8 @@ while True:
     rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
     pingpongAll((255,0,0), (0,255,0), 1000)
     pingpongSections( (255, 0, 0), (0,255, 0),
-        (125,0,0), (0, 255, 0),
-        (0,0,0), (0, 255, 0),
+        (200,0,0), (0, 255, 0),
+        (150,0,0), (0, 255, 0),
         1000)
 
 
