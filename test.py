@@ -76,6 +76,7 @@ def transitionAllToColor(startColor, endColor, totalTime):
     bDelta = int((endColor[2] - startColor[2]) / totalTime)
     color = list(startColor)
     for i in range(0, totalTime):
+        print(color)
         color[0] += rDelta
         color[1] += gDelta
         color[2] += bDelta
