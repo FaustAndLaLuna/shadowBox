@@ -111,7 +111,7 @@ def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, st
         applyToSection(section2, (int(rStarting1 + rDelta1 * i),int(gStarting1 + gDelta1 * i),int(bStarting1 + bDelta1 * i)))
         applyToSection(section3, (int(rStarting2 + rDelta2 * i),int(gStarting2 + gDelta2 * i),int(bStarting2 + bDelta2 * i)))
         pixels.show()
-        time.sleep(.044)
+        time.sleep(.045)
 ############################################################################
 ############################################################################
 ############################################################################
