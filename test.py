@@ -5,7 +5,7 @@ import time
 maxPixels = 40
 pixelsPin = board.D18
 ORDER = neopixel.RGB
-pixels = neopixel.NeoPixel(pixelsPin, maxPixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
+pixels = neopixel.NeoPixel(pixelsPin, maxPixels, brightness=1, auto_write=False, pixel_order=ORDER)
 
 back = [0,1,2,3,4,5,6,7,8,9,10,11]
 mid = [12,13,14,15,16,17,18,19,20,21,22,23]
