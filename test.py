@@ -75,11 +75,7 @@ def transitionAllToColor(startColor, endColor, totalTime):
     gDelta = (endColor[1] - startColor[1]) / totalTime
     bDelta = (endColor[2] - startColor[2]) / totalTime
     color = list(startColor)
-    print(rDelta)
-    print(gDelta)
-    print(bDelta)
     for i in range(0, totalTime):
-        print(color)
         color[0] += rDelta
         color[1] += gDelta
         color[2] += bDelta
@@ -129,10 +125,11 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 def pingpongAll(startingColor, endColor, time):
-    print("pingAll")
+    milliseconds = int(round(time.time() * 1000))
     transitionAllToColor(startingColor, endColor, time)
-    print("pongAll")
     transitionAllToColor(endColor, startingColor, time)
+    milliseconds -= int(round(time.time() * 1000))
+    print(milliseconds)
 
 def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, time):
     print("pingSections")
