@@ -144,7 +144,7 @@ while True:
     pixels.show()
     time.sleep(1)
     rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
-    pingpongAll((255,0,0), (0,255,0), 5000)
+    pingpongAll((255,0,0), (0,255,0), 8000)
     pingpongSections( (255, 0, 0), (0,255, 0),
         (125,0,0), (0, 255, 0),
         (0,0,0), (0, 255, 0),
