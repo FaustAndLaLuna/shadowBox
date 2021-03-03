@@ -117,7 +117,6 @@ def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, st
 ############################################################################
 ############################################################################
 def rainbow_cycle(wait):
-    milliseconds = int( time.time() * 1000 )
     for j in range(255):
         for i in range(3):
             pixel_index = (i * 256 // 3) + j
@@ -128,10 +127,8 @@ def rainbow_cycle(wait):
 
 
 def pingpongAll(startingColor, endColor, halftime):
-
     transitionAllToColor(startingColor, endColor, halftime)
     transitionAllToColor(endColor, startingColor, halftime)
-    milliseconds -= int( time.time() * 1000 )
 
 
 def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halftime):
