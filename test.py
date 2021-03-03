@@ -125,6 +125,7 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 def pingpongAll(startingColor, endColor, halftime):
+    print(halftime)
     milliseconds = int( time.time() * 1000 )
     transitionAllToColor(startingColor, endColor, halftime)
     transitionAllToColor(endColor, startingColor, halftime)
