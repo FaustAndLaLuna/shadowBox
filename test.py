@@ -136,6 +136,7 @@ def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halft
     milliseconds = int( time.time() * 1000 )
     transitionSectionsToColor(sColor1,eColor1,sColor2,eColor2,sColor3,eColor3,halftime)
     transitionSectionsToColor(eColor1,sColor1,eColor2,sColor2,eColor3,sColor3,halftime)
+    milliseconds -= int( time.time() * 1000 )
     print(milliseconds)
 
 while True:
