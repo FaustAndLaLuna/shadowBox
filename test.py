@@ -85,33 +85,33 @@ def transitionAllToColor(startColor, endColor, totalTime):
         time.sleep(.045)
 
 def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, startColor2, endColor2, totalTime):
-    rDelta0 = int((endColor0[0] - startColor0[0]) / totalTime)
-    gDelta0 = int((endColor0[1] - startColor0[1]) / totalTime)
-    bDelta0 = int((endColor0[2] - startColor0[2]) / totalTime)
-    rDelta1 = int((endColor1[0] - startColor1[0]) / totalTime)
-    gDelta1 = int((endColor1[1] - startColor1[1]) / totalTime)
-    bDelta1 = int((endColor1[2] - startColor1[2]) / totalTime)
-    rDelta2 = int((endColor2[0] - startColor2[0]) / totalTime)
-    gDelta2 = int((endColor2[1] - startColor2[1]) / totalTime)
-    bDelta2 = int((endColor2[2] - startColor2[2]) / totalTime)
-    color0 = list(startColor0)
-    color1 = list(startColor1)
-    color2 = list(startColor2)
-    for i in range(0, totalTime):
-        color0[0] += rDelta0
-        color0[1] += gDelta0
-        color0[2] += bDelta0
-        color1[0] += rDelta1
-        color1[1] += gDelta1
-        color1[2] += bDelta1
-        color2[0] += rDelta2
-        color2[1] += gDelta2
-        color2[2] += bDelta2
-        applyToSection(section1, color0)
-        applyToSection(section2, color1)
-        applyToSection(section3, color2)
+    rDelta0 = endColor0[0] - startColor0[0]) / (totalTime/50)
+    gDelta0 = endColor0[1] - startColor0[1]) / (totalTime/50)
+    bDelta0 = endColor0[2] - startColor0[2]) / (totalTime/50)
+    rDelta1 = endColor1[0] - startColor1[0]) / (totalTime/50)
+    gDelta1 = endColor1[1] - startColor1[1]) / (totalTime/50)
+    bDelta1 = endColor1[2] - startColor1[2]) / (totalTime/50)
+    rDelta2 = endColor2[0] - startColor2[0]) / (totalTime/50)
+    gDelta2 = endColor2[1] - startColor2[1]) / (totalTime/50)
+    bDelta2 = endColor2[2] - startColor2[2]) / (totalTime/50)
+
+    rStarting0 = startColor0[0]
+    gStarting0 = startColor0[1]
+    bStarting0 = startColor0[2]
+    rStarting1 = startColor1[0]
+    gStarting1 = startColor1[1]
+    bStarting1 = startColor1[2]
+    rStarting2 = startColor2[0]
+    gStarting2 = startColor2[1]
+    bStarting2 = startColor2[2]
+    
+
+    for i in range(0, totalTime//50):
+        applyToSection(section1, (int(rStarting0 + rDelta0 * i),int(gStarting0 + gDelta0 * i),int(bStarting0 + bDelta0 * i)))
+        applyToSection(section2, (int(rStarting1 + rDelta1 * i),int(gStarting1 + gDelta1 * i),int(bStarting1 + bDelta1 * i)))
+        applyToSection(section3, (int(rStarting2 + rDelta2 * i),int(gStarting2 + gDelta2 * i),int(bStarting2 + bDelta2 * i)))
         pixels.show()
-        time.sleep(.0001)
+        time.sleep(.0042)
 ############################################################################
 ############################################################################
 ############################################################################
@@ -128,16 +128,18 @@ def rainbow_cycle(wait):
 
 
 def pingpongAll(startingColor, endColor, halftime):
-    print(halftime)
-    milliseconds = int( time.time() * 1000 )
+
     transitionAllToColor(startingColor, endColor, halftime)
     transitionAllToColor(endColor, startingColor, halftime)
     milliseconds -= int( time.time() * 1000 )
-    print(milliseconds)
 
-def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, time):
-    transitionSectionsToColor(sColor1,eColor1,sColor2,eColor2,sColor3,eColor3,time)
-    transitionSectionsToColor(eColor1,sColor1,eColor2,sColor2,eColor3,sColor3,time)
+
+def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halftime):
+    print(halftime)
+    milliseconds = int( time.time() * 1000 )
+    transitionSectionsToColor(sColor1,eColor1,sColor2,eColor2,sColor3,eColor3,halftime)
+    transitionSectionsToColor(eColor1,sColor1,eColor2,sColor2,eColor3,sColor3,halftime)
+    print(milliseconds)
 
 while True:
     pixels.fill((125,255,0))
