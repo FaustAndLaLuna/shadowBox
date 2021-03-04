@@ -158,7 +158,7 @@ elif sectionsArg == "leftToRight":
     section1 = left
     section2 = middle
     section3 = right
-else:
+elif sectionsArg == "topToBottom":
     section1 = top
     section2 = center
     section3 = bot
