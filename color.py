@@ -21,22 +21,8 @@ top = [0,1,10,11,12,13,22,23,24,25,34,35]
 center = [2,3,8,9,14,15,20,21,26,27,32,33]
 bot = [4,5,6,7,16,17,18,19,28,29,30,31]
 
-toRemove = []
-section1 = back
-section2 = mid
-section3 = front
 
-for i in range(0, 100):
-	if i >= maxPixels:
-		toRemove.append(i)
-for i in toRemove:
-	if i in section1:
-		section1.remove(i)
-	if i in section2:
-		section2.remove(i)
-	if i in section3:
-		section3.remove(i)
-sections = [section1, section2, section3]
+
 #########################################################
 #########################################################
 #########################################################
@@ -159,10 +145,36 @@ def colorSections(color1, color2, color3):
 ############################################################################
 print(sys.argv)
 brightness = float(sys.argv[1])
-sections = sys.argv[2]
+sectionsArg = sys.argv[2]
 funName = sys.argv[3]
 print(funName)
 print(funName == 'rainbowCycle')
+
+if sectionsArg == "backToFront":
+    section1 = back
+    section2 = mid
+    section3 = front
+elif sectionsArg == "leftToRight":
+    section1 = left
+    section2 = middle
+    section3 = right
+else:
+    section1 = top
+    section2 = center
+    section3 = bot
+
+sections = [section1, section2, section3]
+toRemove = []
+for i in range(0, 100):
+    if i >= maxPixels:
+        toRemove.append(i)
+for i in toRemove:
+    if i in section1:
+        section1.remove(i)
+    if i in section2:
+        section2.remove(i)
+    if i in section3:
+        section3.remove(i)
 
 if funName == "rainbowCycle":
     wait = float(sys.argv[4])
