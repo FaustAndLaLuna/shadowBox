@@ -115,7 +115,7 @@ def transitionSectionsToColor(startColor0, endColor0, startColor1, endColor1, st
 ############################################################################
 ############################################################################
 ############################################################################
-def rainbow_cycle(wait):
+def rainbowCycle(wait):
     for j in range(255):
         for i in range(3):
             pixel_index = (i * 256 // 3) + j
@@ -124,11 +124,15 @@ def rainbow_cycle(wait):
         pixels.show()
         time.sleep(wait)
 
+def rainbowCycleAll(wait):
+    for j in range(255):
+        applyToAll(wheel(j))
+        pixels.show()
+        time.sleep(wait)
 
 def pingpongAll(startingColor, endColor, halftime):
     transitionAllToColor(startingColor, endColor, halftime)
     transitionAllToColor(endColor, startingColor, halftime)
-
 
 def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halftime):
     print(halftime)
@@ -138,20 +142,23 @@ def pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halft
     milliseconds -= int( time.time() * 1000 )
     print(milliseconds)
 
+
 while True:
     #pixels.fill((125,255,0))
     #pixels.show()
     #time.sleep(1)
-    #rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
+    #rainbowCycle(0.001)  # rainbow cycle with 1ms delay per step
+    rainbowCycleAll(.005)
     #pingpongAll((255,0,0), (0,255,0), 1000)
-    pingpongSections( (255, 0, 0), (0,255, 0),
-        (200,0,0), (0, 255, 0),
-        (150,0,0), (0, 255, 0),
-        1000)
-    pingpongSections( (255, 0, 0), (0,255, 0),
-        (160,0,80), (0, 255, 0),
-        (80,0,160), (0, 255, 0),
-        1000)
+    # pingpongSections( (255, 0, 0), (0,255, 0),
+    #     (200,0,0), (0, 255, 0),
+    #     (150,0,0), (0, 255, 0),
+    #     1000)
+    # pingpongSections( (255, 0, 0), (0,255, 0),
+    #     (160,0,80), (0, 255, 0),
+    #     (80,0,160), (0, 255, 0),
+    #     1000)
+    
 
 
 
