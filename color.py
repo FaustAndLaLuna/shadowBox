@@ -2,6 +2,7 @@ import board
 import math
 import neopixel
 import time
+import sys
 
 maxPixels = 40
 pixelsPin = board.D18
@@ -150,24 +151,55 @@ def colorSections(color1, color2, color3):
     applyToSection(section1, color1)
     applyToSection(section2, color2)
     applyToSection(section3, color3)
+    pixels.show()
 
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+brightness = float(sys.argv[1])
+sections = sys.argv[2]
+funName = sys.argv[3]
 
-while True:
-    #pixels.fill((125,255,0))
-    #pixels.show()
-    #time.sleep(1)
-    #rainbowCycle(0.001)  # rainbow cycle with 1ms delay per step
-    #rainbowCycleAll(.01)
-    #pingpongAll((255,0,0), (0,255,0), 1000)
-    # pingpongSections( (255, 0, 0), (0,255, 0),
-    #     (200,0,0), (0, 255, 0),
-    #     (150,0,0), (0, 255, 0),
-    #     1000)
-    # pingpongSections( (255, 0, 0), (0,255, 0),
-    #     (160,0,80), (0, 255, 0),
-    #     (80,0,160), (0, 255, 0),
-    #     1000)
-    
+if funName == "rainbowCycle":
+    wait = float(sys.argv[4])
+    while True:
+        rainbowCycle(wait)
 
+if funName == "rainbowCycleAll":
+    wait = float(sys.argv[4])
+    while True:
+        rainbowCycleAll(wait)
 
+if funName == "pingpongAll":
+    startingColor = eval(sys.argv[4])
+    endColor = eval(sys.argv[5])
+    halftime = int(sys.argv[6])//2
+    while True:
+        pingpongAll(startingColor, endColor, halftime)
+
+if funName == 'pingpongSections':
+    sColor1 = eval(sys.argv[4])
+    eColor1 = eval(sys.argv[5])
+    sColor2 = eval(sys.argv[6])
+    eColor2 = eval(sys.argv[7])
+    sColor3 = eval(sys.argv[8])
+    eColor3 = eval(sys.argv[9])
+    halftime = int(sys.argv[10])//2
+    while True:
+        pingpongSections(sColor1, eColor1, sColor2, eColor2, sColor3, eColor3, halftime)
+
+if funName == 'colorAll':
+    color = eval(sys.argv[4])
+    colorAll(color)
+    while True:
+        time.sleep(10)
+
+if funName == 'color':
+    color1 = eval(sys.argv[4])
+    color2 = eval(sys.argv[5])
+    color3 = eval(sys.argv[6])
+    colorSections(color1, color2, color3)
+    while True:
+        time.sleep(10)
 
