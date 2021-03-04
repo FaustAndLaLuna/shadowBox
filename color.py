@@ -161,6 +161,8 @@ print(sys.argv)
 brightness = float(sys.argv[1])
 sections = sys.argv[2]
 funName = sys.argv[3]
+print(funName)
+print(funName == 'rainbowCycle')
 
 if funName == "rainbowCycle":
     wait = float(sys.argv[4])
