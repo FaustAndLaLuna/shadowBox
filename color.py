@@ -220,3 +220,4 @@ if funName == 'color':
 
 if funName == 'turnOff':
     pixels.fill((0,0,0))
+    pixels.show()
