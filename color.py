@@ -219,5 +219,5 @@ if funName == 'color':
         time.sleep(10)
 
 if funName == 'turnOff':
-    pixels.fill((0,0,0))
+    pixels.fill((-1,-1,-1))
     pixels.show()
