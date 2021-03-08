@@ -3,7 +3,6 @@ import math
 import neopixel
 import time
 import sys
-import os
 
 maxPixels = 40
 pixelsPin = board.D18
@@ -220,6 +219,5 @@ if funName == 'color':
         time.sleep(10)
 
 if funName == 'turnOff':
-    pixels.fill((-1,-1,-1))
-    pixels.show()
-    os.system("sudo reboot")
+    test = (0,0,0)
+    colorSections(test, test, test)
