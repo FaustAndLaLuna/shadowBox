@@ -3,6 +3,7 @@ import math
 import neopixel
 import time
 import sys
+import os
 
 maxPixels = 40
 pixelsPin = board.D18
@@ -221,3 +222,4 @@ if funName == 'color':
 if funName == 'turnOff':
     pixels.fill((-1,-1,-1))
     pixels.show()
+    os.system("sudo reboot")
