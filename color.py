@@ -195,10 +195,10 @@ if funName == "pingpongAll":
 
 if funName == 'pingpongSections':
     sColor1 = eval(sys.argv[4])
-    eColor1 = eval(sys.argv[5])
-    sColor2 = eval(sys.argv[6])
-    eColor2 = eval(sys.argv[7])
-    sColor3 = eval(sys.argv[8])
+    sColor2 = eval(sys.argv[5])
+    sColor3 = eval(sys.argv[6])
+    eColor1 = eval(sys.argv[7])
+    eColor2 = eval(sys.argv[8])
     eColor3 = eval(sys.argv[9])
     halftime = int(sys.argv[10])//2
     while True:
@@ -218,3 +218,5 @@ if funName == 'color':
     while True:
         time.sleep(10)
 
+if funName == 'turnOff':
+    pixels.fill((0,0,0))
