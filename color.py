@@ -139,6 +139,13 @@ def colorSections(color1, color2, color3):
     applyToSection(section3, color3)
     pixels.show()
 
+def blink():
+    turnOff = (0,0,0)
+    for i in range(0,3):
+        colorAll([255,255,255])
+        time.sleep(0.3)
+        colorSections(turnOff, turnOff, turnOff)
+        time.sleep(0.4)
 ############################################################################
 ############################################################################
 ############################################################################
@@ -221,3 +228,6 @@ if funName == 'color':
 if funName == 'turnOff':
     test = (0,0,0)
     colorSections(test, test, test)
+
+if funName == 'blink':
+    blink()
