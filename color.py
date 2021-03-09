@@ -224,9 +224,6 @@ if funName == 'color':
 
 if funName == 'turnOff':
     print(sections)
-    print(sections[0])
-    print(sections[1])
-    print(sections[2])
     test = (0,0,0)
     colorSections(test, test, test)
 
