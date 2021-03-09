@@ -7,7 +7,7 @@ contactRoute = '/edToDani'
 lastIDColor = None
 lastIDContact = None
 changeString = "sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.pyTEXTTOREPLACE' --name color"
-currChange = "sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 0.5 leftToRight rainbowCycle .0025' --name color"
+currChange = "sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 0.5 leftToRight rainbowCycle .01' --name color"
 stopProcess = "sudo pm2 delete color"
 timesWaitedContact = 0
 
