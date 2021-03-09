@@ -223,7 +223,6 @@ if funName == 'color':
         time.sleep(10)
 
 if funName == 'turnOff':
-    print(sections)
     test = (0,0,0)
     colorSections(test, test, test)
 
