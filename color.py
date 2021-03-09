@@ -141,7 +141,7 @@ def colorSections(color1, color2, color3):
 
 def blink():
     turnOff = (0,0,0)
-    for i in range(0,3):
+    for i in range(0,4):
         colorAll([255,255,255])
         time.sleep(0.3)
         colorSections(turnOff, turnOff, turnOff)
