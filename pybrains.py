@@ -30,15 +30,9 @@ def applyColorResponse():
 
 def blink():
     os.system(stopProcess)
-    for i in range(0,3):
-        time.sleep(.2)
-        os.system("sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 1.0 backToFront colorAll [255,255,255]' --name color")
-        time.sleep(.2)
-        os.system(stopProcess)
-        os.system("sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 1.0 backToFront turnOff' --name color")
-        time.sleep(.5)
-        os.system(stopProcess)
-        time.sleep(.2)
+    os.system("sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 1.0 backToFront blink' --name color")
+    os.system(stopProcess)
+    time.sleep(3)
     os.system(currChange)
 
 
