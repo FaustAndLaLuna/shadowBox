@@ -4,7 +4,7 @@ import neopixel
 import time
 import sys
 
-maxPixels = 40
+maxPixels = 48
 pixelsPin = board.D18
 ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixelsPin, maxPixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
