@@ -19,6 +19,7 @@ def applyColorResponse():
         colorObj = response.json()
         currID = colorObj['currID']
         if currID != lastIDColor:
+            print(currChange)
             lastIDColor = currID
             os.system(stopProcess)
             currChange = changeString.replace('TEXTTOREPLACE', colorObj['arguments'])
@@ -29,6 +30,7 @@ def applyColorResponse():
         return
 
 def blink():
+    print(currChange)
     os.system(stopProcess)
     os.system("sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 1.0 backToFront blink' --name color")
     os.system(stopProcess)
