@@ -1,6 +1,6 @@
 import requests, json, time, os
 
-host = 'http://localhost:81'
+host = 'http://10.0.1.9:81'
 colorCheckRoute = '/updateDaniBox'
 contactRoute = '/edToDani'
 
