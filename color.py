@@ -9,9 +9,9 @@ pixelsPin = board.D18
 ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixelsPin, maxPixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
-back = [0,1,2,3,4,5,6,7,8,9,10,11]
-mid = [12,13,14,15,16,17,18,19,20,21,22,23]
-front = [24,25,26,27,28,29,30,31,32,33,34,35]
+back = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+mid = [24,25,26,27,28,29,30,31,32,33,34,35]
+front = [36,37,38,39,40,41,42,43,44,45,46,47]
 
 left = [0,1,2,3,20,21,22,23,24,25,26,27]
 middle = [4,5,6,7,16,17,18,19,28,29,30,31]
@@ -150,12 +150,9 @@ def blink():
 ############################################################################
 ############################################################################
 ############################################################################
-print(sys.argv)
 brightness = float(sys.argv[1])
 sectionsArg = sys.argv[2]
 funName = sys.argv[3]
-print(funName)
-print(funName == 'rainbowCycle')
 
 if sectionsArg == "backToFront":
     section1 = back
