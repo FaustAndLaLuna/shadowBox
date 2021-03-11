@@ -9,9 +9,14 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var accountSid = 'AC4409213628875dbd54038e77c9691740';
+var authToken = 'fab725efb3d1baffe7453955c17e4d66';
 
-var daniColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .0025', 'currID':uuidv4()};
-var edgarColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .0025', 'currID':uuidv4()};
+var twilio = require('twilio');
+var client = new twilio(accountSid, authToken);
+
+var daniColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .001', 'currID':uuidv4()};
+var edgarColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .001', 'currID':uuidv4()};
 var edToDani = {'isActive': false, 'currID': uuidv4()}
 var daniToEd = {'isActive': false, 'currID': uuidv4()}
 
@@ -55,7 +60,11 @@ app.get('/daniToEd', (request, response) => {
   daniToEd.isActive = true;
   daniToEd.currID = uuidv4();
   response.json(daniToEd);
-  console.log(daniToEd);
+  client.messages.create({
+    body: 'Poke!',
+    to: '+525514377997',
+    from: '+17149422514'
+  }).then((message) => console.log(message));
 });
 
 app.get('/daniToEdContact', (request, response) => {

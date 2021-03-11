@@ -30,7 +30,6 @@ def applyColorResponse():
         return
 
 def blink():
-    print(currChange)
     os.system(stopProcess)
     os.system("sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 1.0 backToFront blink' --name color")
     os.system(stopProcess)
@@ -46,13 +45,14 @@ def applyContactResponse():
         contactObj = response.json()
         currID = contactObj['currID']
         isActive = contactObj['isActive']
-        timesWaitedContact %= 450
-        if timesWaitedContact != 0:
-            timesWaitedContact += 1
-            return
-        timesWaitedContact += 1
         if isActive:
+            timesWaitedContact %= 450
+            if timesWaitedContact != 0:
+                timesWaitedContact += 1
+                return
+            timesWaitedContact += 1
             blink()
+        
     except:
         print("El servidor no está respondiendo. Reintentando.")
         time.sleep(5)
