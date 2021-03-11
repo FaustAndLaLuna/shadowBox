@@ -37,9 +37,11 @@ app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
   if(typeOf (updateColor) == 'undefined')
     return;
-  if(typeOf (updateColor['brightness']) == 'undefined')
+  if(typeOf (updateColor.brightness) == 'undefined')
     return;
-  if(typeOf (updateColor['funName']) == 'undefined')
+  if(typeOf (updateColor.funName) == 'undefined')
+    return;
+  if(typeOf (updateColor.sectionOrder) == 'undefined')
     return;
   arguments = brains.toCallAttributes(updateColor);
   app.locals.daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
