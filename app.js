@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
-  print(updateColor);
+  console.log(updateColor);
   if(typeOf (updateColor) == 'undefined')
     return;
   if(typeOf (updateColor.brightness) == 'undefined')
