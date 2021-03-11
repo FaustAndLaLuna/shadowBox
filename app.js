@@ -35,6 +35,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
+  if(typeOf (updateColor) == 'undefined')
+    return;
+  if(typeOf (updateColor['brightness']) == 'undefined')
+    return;
+  if(typeOf (updateColor['funName']) == 'undefined')
+    return;
   arguments = brains.toCallAttributes(updateColor);
   app.locals.daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
   console.log(app.locals.daniColorCaja);
@@ -47,6 +53,12 @@ app.get('/updateDaniBox', (request, response) => {
 
 app.post('/updateEdgarBox', (request, response) => {
   updateColor = request.body;
+  if(typeOf (updateColor) == 'undefined')
+    return;
+  if(typeOf (updateColor['brightness']) == 'undefined')
+    return;
+  if(typeOf (updateColor['funName']) == 'undefined')
+    return;
   arguments = brains.toCallAttributes(updateColor);
   app.locals.edgarColorCaja = {'arguments':arguments,'currID':uuidv4()};
   console.log(app.locals.edgarColorCaja);
