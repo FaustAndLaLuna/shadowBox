@@ -1,6 +1,6 @@
 import requests, json, time, os
 
-host = 'http://kdjo.m'
+host = 'http://kdjo.me'
 colorCheckRoute = '/updateDaniBox'
 contactRoute = '/edToDaniContact'
 
