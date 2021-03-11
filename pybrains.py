@@ -34,7 +34,7 @@ def blink():
     os.system(stopProcess)
     os.system("sudo pm2 start 'sudo python3 /home/fall/shadowBox/color.py 1.0 backToFront blink' --name color")
     os.system(stopProcess)
-    time.sleep(3)
+    time.sleep(5)
     os.system(currChange)
 
 
@@ -44,7 +44,6 @@ def applyContactResponse():
     try:
         response = requests.get(url=host+contactRoute)
         contactObj = response.json()
-        print(response)
         currID = contactObj['currID']
         isActive = contactObj['isActive']
         timesWaitedContact %= 450
