@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ahd8acy.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="shared firstPlane indexMenu" style='background: #b6abcf;'>
+        <div class="colorOverlay" style='background: linear-gradient(0deg, #887ba5aa 30%,#e0dde788 100%)'></div>
+        <div class='mainGrid'>
+            <button style='background-color: #dc935b' onclick='window.location.href = "./intro.html"'>Intro</button>
+            <button style='background-color: #52895a' onclick='window.location.href = "./color.html"'>Cambiar color</button>
+            <button id='poke' style='background-color: #c6cdd3' onclick='poke()'>Poke</button>
+            <button id='pokeOff' style='background-color: #C07692' onclick='pokeTurnOff()'>Apagar Poke</button>
+            <button id="turnOff" style='background-color: #6c585d' onclick='turnOff()'>Apagar</button>
+        </div>
+    </div>
+    <script src='./assets/js/jquery-3.6.0.min.js'></script>
+    <script src='./assets/js/color-thief.js'></script>
+    <script>
+        function turnOff(){
+            $('#turnOff').attr('disabled', 'true');
+            $('#turnOff').css('opacity', '0.5');
+            $('#turnOff').css('background', 'gray');
+            $('#turnOff').text('Apagado');
+            dataToSend = {'brightness':0.1, 'sectionOrder':'topToBottom', 'funName': 'turnOff'}
+            $.ajax({
+                url: '/updateDaniBox',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+        }
+        function poke(){
+            $('#poke').attr('disabled', 'true');
+            $('#poke').css('opacity', '0.5');
+            $('#poke').css('background', 'gray');
+            $('#poke').text('Poked!');
+            $.get('/daniToEd');
+        }
+        function pokeTurnOff(){
+            $('#pokeOff').attr('disabled', 'true');
+            $('#pokeOff').css('opacity', '0.5');
+            $('#pokeOff').css('background', 'gray');
+            $('#pokeOff').text('Poke apagado!');
+            $.get('/daniAcknowledge');
+        }
+    </script>
+</body>
+</html>

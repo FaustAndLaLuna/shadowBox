@@ -1,0 +1,186 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ahd8acy.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <button class="changePlane" onclick='changePlanes();'>Continuar ></button>
+    <div class="firstPlane shared">
+        <img src='./assets/img/1.jpg' style='opacity: 0;'>
+        <div class="colorOverlay"></div>
+        <p></p>
+    </div>
+    <div class="secondPlane shared">
+        <img src='./assets/img/2.jpg' style='opacity: 0;'>
+        <div class="colorOverlay"></div>
+        <p></p>
+    </div>
+    <div class="thirdPlane shared">
+        <img src='./assets/img/3.jpg' style='opacity: 0;'>
+        <div class="colorOverlay"></div>
+        <p></p>
+    </div>
+    <script src='./assets/js/jquery-3.6.0.min.js'></script>
+    <script src='./assets/js/color-thief.js'></script>
+    <script>
+        var i = 1;
+        var messages = ['',
+            'Hoy es un día para festejarte a ti, Daniela:',
+            'todos los elementos que te conforman,',
+            'empezando por los que más importan.',
+            'Los seres que más amas,',
+            'y las relaciones que siempre se quedan contigo.',
+            'En los momentos glamurosos...',
+            'y en los cotidianos.',
+            'Las relaciones que nacen de un sólo momento,',
+            'las que te ayudan a crecer como profesionista,',
+            'e incluso las que nunca pensamos que iban a ocurrir.',
+            'Las millones y un cosas que hacen que seas quien eres:',
+            'tu profesión y tu pasión por crecer como persona,',
+            'las celebraciones en las que participas...',
+            'y los momentos de paz que te otorgas a ti misma.',
+            'Los antojos que te has dado,',
+            'los increíbles recuerdos que has formado,',
+            'los simples placeres de la vida',
+            'que hacen que valga la pena,',
+            'incluso cuando las cosas son extraordinariamente difíciles.',
+            'Los gustos culposos que nos hacen decir:',
+            'qué gordo fue ese momento...',
+            'pero muero por repetirlo.',
+            'Tu apreciación por la belleza de las cosas simples,',
+            'incluso cuando simplemente son "tus colores".',
+            'Los errores de los cuales hemos aprendido juntos,',
+            'hasta los míos que nos han hecho reír en demasía,',
+            'y las cosas que tú y yo sabemos que nadie te va a cambiar.',
+            'Por esto y por una infinidad de razones, quiero tomarme el tiempo, hoy y siempre, para celebrarte todos los días.',
+            'No sé qué nos depara el futuro a ti y a mí, cuanto de él compartiremos o siquiera si vamos a seguir hablando en 1, 5, 10, 30 años...',
+            'pero sí se que, mientras yo viva, vas a tener a alguien quien crée en ti, y quien celebra tu existencia como un pilar de quien fue y quien es.',
+            'Estoy orgulloso de ti, y siempre te quiero, <br>Edgar.'
+        ];
+        const colorThief = new ColorThief();
+        function getPlaneImgColor(el, num){
+            let i = num;
+            let img = $(el).find('img')[0];
+            if(img.complete){
+                color = colorThief.getColor(img);
+                $(el).css('background', `rgb(${color[0]},${color[1]},${color[2]}) url(./assets/img/${i}.jpg) no-repeat center center`);
+                return `rgb(${color[0]},${color[1]},${color[2]}) url('./assets/img/${i}.jpg') no-repeat center center`;
+            } else {
+                $(img).on('load', () => {
+                    color = colorThief.getColor(img);
+                    $(el).css('background', `rgb(${color[0]},${color[1]},${color[2]}) url(./assets/img/${i}.jpg) no-repeat center center`);
+                    return `rgb(${color[0]},${color[1]},${color[2]}) url('./assets/img/${i}.jpg') no-repeat center center`;
+                })
+            }
+        }
+        function getPlaneGradient(el){
+            let img = $(el).find('img')[0];
+            if(img.complete){
+                palette = colorThief.getPalette(img, 5);
+                brightestCol = 0;
+                brightest = [0,0,0];
+                darkestCol = 255*3;
+                darkest = [255,255,255];
+                palette.forEach((col, ind) => {
+                    brightness = col[0] + col[1] + col[2];
+                    if(brightness > brightestCol){
+                        brightestCol = brightness;
+                        brightest = col;                  
+                    } 
+                    if(brightness < darkestCol){
+                        darkestCol = brightness;
+                        darkest = col;
+                    }
+                })
+                return `linear-gradient(0deg, rgba(${darkest[0]}, ${darkest[1]}, ${darkest[2]}, 0.65) 30%, rgba(${brightest[0]}, ${brightest[1]}, ${brightest[2]}, 0.5) 100%)`;
+            } else {
+                $(img).on('load', () => {
+                    palette = colorThief.getPalette(img, 5);
+                    brightestCol = 0;
+                    brightest = [0,0,0];
+                    darkestCol = 255*3;
+                    darkest = [255,255,255];
+                    palette.forEach((col, ind) => {
+                        brightness = col[0] + col[1] + col[2];
+                        if(brightness > brightestCol){
+                            brightestCol = brightness;
+                            brightest = col;                  
+                        } else if(brightness < darkestCol){
+                            darkestCol = brightness;
+                            darkest = col;
+                        }
+                    })
+                    return `linear-gradient(0deg, rgba(${darkest[0]}, ${darkest[1]}, ${darkest[2]}, 0.65) 30%, rgba(${brightest[0]}, ${brightest[1]}, ${brightest[2]}, 0.5) 100%)`;
+                })
+            }
+        }
+        function changePlanes(){
+            console.log(i);
+            if(i == 34){
+                window.location.href = './index.html';
+            }
+
+            $('.changePlane').attr('disabled', true);
+            firstPlane = $('.firstPlane')[0];
+            secondPlane = $('.secondPlane')[0];
+            thirdPlane = $('.thirdPlane')[0];
+            $(firstPlane).addClass('jumpFirst');
+            setTimeout(()=>{
+                $(firstPlane).removeClass('jumpFirst');
+                $(firstPlane).addClass('jumpSecond');
+            }, 400);
+            setTimeout(() => {
+                $(firstPlane).addClass('rotated');
+            }, 800);
+            setTimeout(() => {
+                $(firstPlane).removeClass('rotated');
+                $(firstPlane).removeClass('jumpSecond');
+                $(firstPlane).addClass('thirdPlane');
+                $(firstPlane).addClass('toThirdPlane');
+                $(firstPlane).removeClass('firstPlane');
+                $(secondPlane).addClass('toFirstPlane');
+                $(thirdPlane).addClass('secondPlane');
+            }, 2300)
+            setTimeout(() => {
+                $(firstPlane).removeClass('toThirdPlane');
+                $($(firstPlane).find('img')[0]).attr('src', `./assets/img/${i}.jpg`);
+                $($(firstPlane).find('p')[0]).html(messages[i]);
+                getPlaneImgColor(firstPlane, i);
+                $($(firstPlane).find('.colorOverlay')[0]).css('background', getPlaneGradient(firstPlane));
+                $(secondPlane).addClass('firstPlane');
+                $(secondPlane).removeClass('toFirstPlane');
+                $(secondPlane).removeClass('secondPlane');
+                $(thirdPlane).removeClass('thirdPlane');
+                i++;
+                $('.changePlane').removeAttr('disabled');
+            }, 2800)
+        }
+        $(window).resize(() => {
+            $('body').css('height', window.innerHeight);
+            $('html').css('height', window.innerHeight);
+        });
+        $(window).on('load', ()=> {
+            $('body').css('height', window.innerHeight);
+            $('html').css('height', window.innerHeight);
+
+            firstPlane = $('.firstPlane')[0];
+            secondPlane = $('.secondPlane')[0];
+            thirdPlane = $('.thirdPlane')[0];
+            getPlaneImgColor(firstPlane, i);
+            $($(firstPlane).find('.colorOverlay')[0]).css('background', getPlaneGradient(firstPlane));
+            $($(firstPlane).find('p')[0]).text(messages[i]);
+            i++;
+            getPlaneImgColor(secondPlane, i);
+            $($(secondPlane).find('.colorOverlay')[0]).css('background', getPlaneGradient(secondPlane));
+            $($(secondPlane).find('p')[0]).text(messages[i]);
+            i++;
+            getPlaneImgColor(thirdPlane, i);
+            $($(thirdPlane).find('p')[0]).text(messages[i]);
+            $($(thirdPlane).find('.colorOverlay')[0]).css('background', getPlaneGradient(thirdPlane));
+            i++;
+        });
+    </script>
+</body>
+</html>

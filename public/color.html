@@ -1,0 +1,188 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ahd8acy.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css'>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="shared firstPlane indexMenu" style='background: #C4979B;'>
+        <div class='formExpand' style='background: #C07692' data-id='arcoirisAll' onclick='activateForm(this);'>Arcoíris <i class="las la-angle-down"></i></div>
+        <form id='arcoirisAll'>
+            Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
+            Rápido <input class='speed' type='range' name='speed' min='0.001' max='0.025' step='0.0005' value='0.0025'>Lento<br>
+            <button type='button' onclick='rainbowCycleAll();'>Cambiar Color</button>
+        </form>
+        <div class='formExpand' style='background: #C07692' data-id='arcoiris' onclick='activateForm(this);'>Arcoíris por secciones<i class="las la-angle-down"></i></div>
+        <form id='arcoiris'>
+            Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
+            Rápido <input class='speed' type='range' name='speed' min='0.001' max='0.01' step='0.0005' value='0.0025'>Lento<br>
+            Órden <select class='sectionOrder' name='sectionOrder'>
+                <option value='backToFront'>Atrás hacia adelante</option>
+                <option value='leftToRight'>Izquierda a derecha</option>
+                <option value='topToBottom'>Arriba hacia abajo</option>
+            </select><br>
+            <button type='button' onclick='rainbowCycle();' data-funname='rainbowCycle' >Cambiar Color</button>
+        </form>
+        <div class='formExpand' style='background: #C07692' data-id='color' onclick='activateForm(this);'>Color<i class="las la-angle-down"></i></div>
+        <form id='color'>
+            Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
+            Color: <input type='color' class='startColor' value='#ffaa33'><br>
+            <button type='button' onclick='color();'>Cambiar Color</button>
+        </form>
+        <div class='formExpand' style='background: #C07692' data-id='colorSections' onclick='activateForm(this);'>Color por secciones<i class="las la-angle-down"></i></div>
+        <form id='colorSections'>
+            Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
+            Órden <select class='sectionOrder' name='sectionOrder'>
+                <option value='backToFront'>Atrás hacia adelante</option>
+                <option value='leftToRight'>Izquierda a derecha</option>
+                <option value='topToBottom'>Arriba hacia abajo</option>
+            </select><br>
+            Color 1: <input type='color' class='startColor' value='#ffaa33'><br>
+            Color 2: <input type='color' class='startColor' value='#ff8811'><br>
+            Color 3: <input type='color' class='startColor' value='#ff4400'><br>
+            <button type='button' onclick='colorSections();'>Cambiar Color</button>
+        </form>
+        <div class='formExpand' style='background: #C07692' data-id='pingpong' onclick='activateForm(this);'>Pingpong<i class="las la-angle-down"></i></div>
+        <form id='pingpong'>
+            Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
+            Color Inicial: <input type='color' class='startColor' value='#ffaa33'><br>
+            Color Final: <input type='color' class='endColor' value='#ff8811'><br>
+            Lento <input class='speed' type='range' name='speed' min='1000' max='10000' step='50' value='0.0025'>Rápido<br>
+            <button type='button' onclick='pingpong();'>Cambiar Color</button>
+        </form>
+        <div class='formExpand' style='background: #C07692' data-id='pingpongSections' onclick='activateForm(this);'>Pingpong por secciones<i class="las la-angle-down"></i></div>
+        <form id='pingpongSections'>
+            Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
+            Órden <select class='sectionOrder' name='sectionOrder'>
+                <option value='backToFront'>Atrás hacia adelante</option>
+                <option value='leftToRight'>Izquierda a derecha</option>
+                <option value='topToBottom'>Arriba hacia abajo</option>
+            </select><br>
+            Colores Iniciales: <input type='color' class='startColor' value='#ff0000'><input type='color' class='startColor' value='#ff0095'><input type='color' class='startColor' value='#ff00d4'><br>
+            Colores Finales: &nbsp;&nbsp;<input type='color' class='endColor' value='#6600ff'><input type='color' class='endColor' value='#1e00ff'><input type='color' class='endColor' value='#007BFF'><br>
+            Lento <input class='speed' type='range' name='speed' min='1000' max='10000' step='50' value='0.0025'>Rápido<br>
+            <button type='button' onclick='pingpongSections();'>Cambiar Color</button>
+        </form>
+
+    </div>
+    <script src='./assets/js/jquery-3.6.0.min.js'></script>
+    <script src='./assets/js/color-thief.js'></script>
+    <script>
+        function activateForm(el){
+            $('i').removeClass('la-angle-down');
+            $('i').addClass('la-angle-up');
+            $(el).find('i').removeClass('la-angle-up');
+            $(el).find('i').addClass('la-angle-down');
+            section = $(el).data('id');
+            $($('.formActive')[0]).slideUp();
+            $($('.formActive')[0]).removeClass('formActive');
+            $(`#${section}`).addClass('formActive');
+            $(`#${section}`).slideDown();
+        }
+        function rainbowCycleAll(){
+            funName = 'rainbowCycle';
+            sectionOrder = 'backToFront';
+            brightness = $($('.brightness')[0]).val();
+            speed = $($('.speed')[0]).val();
+            dataToSend = {'brightness':brightness, 'sectionOrder': sectionOrder,
+        'funName': funName, 'speed': speed};
+            $.ajax({
+                url:            '/updateDaniBox',
+                type:           'POST',
+                contentType:    'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+            console.log(dataToSend);
+        }
+        function rainbowCycle(){
+            funName = 'rainbowCycle';
+            sectionOrder = $($('.sectionOrder')[0]).val();
+            brightness = $($('.brightness')[1]).val();
+            speed = $($('.speed')[1]).val();
+            dataToSend = {'brightness':brightness, 'sectionOrder': sectionOrder,
+        'funName': funName, 'speed': speed};
+            $.ajax({
+                url:            '/updateDaniBox',
+                type:           'POST',
+                contentType:    'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+            console.log(dataToSend);
+        }
+        function color(){
+            funName = 'colorAll';
+            sectionOrder = 'backToFront';
+            startColor = hexToRgb($($('.startColor')[0]).val());
+            brightness = $($('.brightness')[2]).val();
+            dataToSend = {'brightness':brightness, 'sectionOrder': sectionOrder,
+        'funName': funName, 'startColor': [startColor]};
+            $.ajax({
+                url:            '/updateDaniBox',
+                type:           'POST',
+                contentType:    'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+            console.log(dataToSend);
+        }
+        function colorSections(){
+            funName = 'color';
+            sectionOrder = $($('.sectionOrder')[1]).val();
+            startColor = [hexToRgb($($('.startColor')[1]).val()),hexToRgb($($('.startColor')[2]).val()),hexToRgb($($('.startColor')[3]).val())];
+            brightness = $($('.brightness')[3]).val();
+            dataToSend = {'brightness':brightness, 'sectionOrder': sectionOrder,
+        'funName': funName, 'startColor': startColor};
+            $.ajax({
+                url:            '/updateDaniBox',
+                type:           'POST',
+                contentType:    'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+            console.log(dataToSend);
+        }
+        function pingpong(){
+            funName = 'pingpongAll';
+            sectionOrder = 'backToFront';
+            startColor = [hexToRgb($($('.startColor')[4]).val())];
+            endColor = [hexToRgb($($('.endColor')[0]).val())]
+            brightness = $($('.brightness')[4]).val();
+            speed = $($('.speed')[2]).val();
+            dataToSend = {'brightness':brightness, 'sectionOrder': sectionOrder,
+        'funName': funName, 'startColor': startColor, 'endColor':endColor, 'speed':speed};
+            $.ajax({
+                url:            '/updateDaniBox',
+                type:           'POST',
+                contentType:    'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+            console.log(dataToSend);
+        }
+        function pingpongSections(){
+            funName = 'pingpongSections';
+            sectionOrder = $($('.sectionOrder')[2]).val();
+            startColor = [hexToRgb($($('.startColor')[5]).val()),hexToRgb($($('.startColor')[6]).val()),hexToRgb($($('.startColor')[7]).val())];
+            endColor = [hexToRgb($($('.endColor')[1]).val()),hexToRgb($($('.endColor')[2]).val()),hexToRgb($($('.endColor')[3]).val())]
+            brightness = $($('.brightness')[5]).val();
+            speed = $($('.speed')[3]).val();
+            dataToSend = {'brightness':brightness, 'sectionOrder': sectionOrder,
+        'funName': funName, 'startColor': startColor, 'endColor':endColor, 'speed':speed};
+            $.ajax({
+                url:            '/updateDaniBox',
+                type:           'POST',
+                contentType:    'application/json',
+                data: JSON.stringify(dataToSend)
+            });
+            console.log(dataToSend);
+        }
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+            ] : null;
+        }
+    </script>
+</body>
+</html>

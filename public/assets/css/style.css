@@ -1,0 +1,169 @@
+html, body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    font-family: brother-1816-printed;
+}
+.shared{
+    position: absolute;
+    border: 5vh solid transparent;
+    box-sizing: border-box;
+    -moz-box-shadow: inset 0px 0px 1vh 1vh rgba(0,0,0,0.4);
+    -webkit-box-shadow: inset 0px 0px 1vh 1vh rgba(0,0,0,0.4);
+    box-shadow: inset 0px 0px 1vh 1vh rgba(0,0,0,0.4);
+    /* border-image-slice: 100;
+    border-image-width: 5vh;
+    border-image-outset: 0px;
+    border-image-repeat: round round;
+    border-image-source: url(./assets/img/border.png); */
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transition: transform cubic-bezier(0.85, 0.02, 1, 1) 0.5s;
+    background-size: contain !important;
+}
+.shared > div{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.indexMenu{
+    transition: none !important;
+}
+#turnOff{
+    grid-column: 1 / span 2;
+}
+.mainGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    z-index: 2;
+    align-items: center;
+    justify-items: center;
+}
+.mainGrid > button{
+    height: 70px;
+    width: 200px;
+}
+.thirdPlane{
+    opacity: 0;
+    display: revert;
+    transform: translate(-50%, -50%) scale(0.09) ;
+    z-index: 1;
+}
+.secondPlane{
+    transform: translate(-50%, -50%) scale(0.3) ;
+    z-index: 50;
+}
+.firstPlane{
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform cubic-bezier(0.85, 0.02, 1, 1) 1.5s, top ease 0.4s;
+    transform-origin: bottom;
+    z-index: 100;
+}
+.jumpFirst{
+    top: 43%;
+}
+.jumpSecond{
+    top: 48%;
+}
+.rotated{
+    transform: translate(-50%, -50%) scale(1) rotate3d(1,0,0, 90deg);
+}
+.toFirstPlane{
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+.toThirdPlane{
+    display: none;
+}
+.transition{
+    transition: none !important;
+}
+.colorOverlay{
+    opacity: 0.5;
+    z-index: 1;
+}
+button{
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    outline: none;
+    background: none;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+    box-shadow: 4px 7px 10px #555555;
+}
+.changePlane{
+    z-index: 999;
+    position: absolute;
+    right: 13vw;
+    top: 7vh;
+    border: 1px solid white !important;
+    box-shadow: 2px 2px 4px black;
+}
+.shared > p{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    left: 10%;
+    color: white;
+    z-index: 3;
+    text-shadow: 3px 3px 4px black;
+}
+.formExpand{
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: calc(100% - 30px) !important;
+    height: fit-content !important;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    text-align: center;
+    transform: revert !important;
+    z-index: 4;
+}
+.formExpand i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+form{
+    height: fit-content;
+    padding: 20px 30px;
+    background: #e2c0c0;
+    overflow: hidden;
+    box-sizing: revert;
+    margin: 0;
+    margin-top: -2px;
+    transition: max-height ease 0.4ms;
+    display: none;
+}
+form button{
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+    margin-top: 26px;
+}
+.formActive{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+@media screen and (max-width: 800px){
+    .mainGrid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+    #turnOff{
+        grid-column: revert;
+    }
+}

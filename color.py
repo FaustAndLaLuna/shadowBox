@@ -6,7 +6,7 @@ import sys
 
 maxPixels = 12
 pixelsPin = board.D18
-ORDER = neopixel.RGB
+ORDER = neopixel.GRB
 pixels = neopixel.NeoPixel(pixelsPin, maxPixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 back = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
@@ -107,7 +107,6 @@ def rainbowCycle(wait):
         for i in range(3):
             pixel_index = (i * 256 // 3) + j
             applyToSection(sections[i], wheel(pixel_index&255))
-            #pixels[sections[i]] = wheel(pixel_index & 255)
         pixels.show()
         time.sleep(wait)
 
