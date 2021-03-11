@@ -36,13 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
   console.log(updateColor);
-  if(typeOf (updateColor) == 'undefined')
+  if(typeof (updateColor) == 'undefined')
     return;
-  if(typeOf (updateColor.brightness) == 'undefined')
+  if(typeof (updateColor.brightness) == 'undefined')
     return;
-  if(typeOf (updateColor.funName) == 'undefined')
+  if(typeof (updateColor.funName) == 'undefined')
     return;
-  if(typeOf (updateColor.sectionOrder) == 'undefined')
+  if(typeof (updateColor.sectionOrder) == 'undefined')
     return;
   arguments = brains.toCallAttributes(updateColor);
   app.locals.daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
