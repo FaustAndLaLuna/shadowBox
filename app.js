@@ -15,10 +15,11 @@ var authToken = 'fab725efb3d1baffe7453955c17e4d66';
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 
-var daniColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .001', 'currID':uuidv4()};
-var edgarColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .001', 'currID':uuidv4()};
-var edToDani = {'isActive': false, 'currID': uuidv4()}
-var daniToEd = {'isActive': false, 'currID': uuidv4()}
+
+app.locals.daniColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .001', 'currID':uuidv4()};
+app.locals.edgarColorCaja = {'arguments': ' 0.5 leftToRight rainbowCycle .001', 'currID':uuidv4()};
+app.locals.edToDani = {'isActive': false, 'currID': uuidv4()}
+app.locals.edToDani = {'isActive': false, 'currID': uuidv4()}
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -35,31 +36,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
   arguments = brains.toCallAttributes(updateColor);
-  daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
-  console.log(daniColorCaja);
+  app.locals.daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
+  console.log(app.locals.daniColorCaja);
 });
 
 app.get('/updateDaniBox', (request, response) => {
-  response.json(daniColorCaja);
+  response.json(app.locals.daniColorCaja);
 });
 
 
 app.post('/updateEdgarBox', (request, response) => {
   updateColor = request.body;
   arguments = brains.toCallAttributes(updateColor);
-  edgarColorCaja = {'arguments':arguments,'currID':uuidv4()};
-  console.log(edgarColorCaja);
+  app.locals.edgarColorCaja = {'arguments':arguments,'currID':uuidv4()};
+  console.log(app.locals.edgarColorCaja);
 });
 
 app.get('/updateEdgarBox', (request, response) => {
-  response.json(edgarColorCaja);
+  response.json(app.locals.edgarColorCaja);
 });
 
 
 app.get('/daniToEd', (request, response) => {
-  daniToEd.isActive = true;
-  daniToEd.currID = uuidv4();
-  response.json(daniToEd);
+  app.locals.edToDani.isActive = true;
+  app.locals.edToDani.currID = uuidv4();
+  response.json(app.locals.edToDani);
   client.messages.create({
     body: 'Poke!',
     to: '+525514377997',
@@ -68,28 +69,28 @@ app.get('/daniToEd', (request, response) => {
 });
 
 app.get('/daniToEdContact', (request, response) => {
-  response.json(daniToEd)
+  response.json(app.locals.edToDani)
 });
 
 app.get('/edAcknowledge', (request, response) => {
-  daniToEd.isActive = false;
-  response.json(daniToEd);
+  app.locals.edToDani.isActive = false;
+  response.json(app.locals.edToDani);
 });
 
 app.get('/edToDani', (request, response) => {
-  edToDani.isActive = true;
-  edToDani.currID = uuidv4();
-  response.json(edToDani);
-  console.log(edToDani);
+  app.locals.edToDani.isActive = true;
+  app.locals.edToDani.currID = uuidv4();
+  response.json(app.locals.edToDani);
+  console.log(app.locals.edToDani);
 });
 
 app.get('/edToDaniContact', (request, response) => {
-  response.json(edToDani)
+  response.json(app.locals.edToDani)
 });
 
 app.get('/daniAcknowledge', (request, response) => {
-  edToDani.isActive = false;
-  response.json(edToDani);
+  app.locals.edToDani.isActive = false;
+  response.json(app.locals.edToDani);
 });
 
 /*
