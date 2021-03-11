@@ -49,7 +49,7 @@
             Intensidad:<br> Poco brillo <input class='brightness' type='range' name='brightness' min='0' max='1' step='0.01' value='0.5'> Mucho Brillo<br>
             Color Inicial: <input type='color' class='startColor' value='#ffaa33'><br>
             Color Final: <input type='color' class='endColor' value='#ff8811'><br>
-            Lento <input class='speed' type='range' name='speed' min='1000' max='10000' step='50' value='0.0025'>Rápido<br>
+            Rápido <input class='speed' type='range' name='speed' min='1000' max='10000' step='50' value='0.0025'>Lento<br>
             <button type='button' onclick='pingpong();'>Cambiar Color</button>
         </form>
         <div class='formExpand' style='background: #C07692' data-id='pingpongSections' onclick='activateForm(this);'>Pingpong por secciones<i class="las la-angle-down"></i></div>
@@ -62,7 +62,7 @@
             </select><br>
             Colores Iniciales: <input type='color' class='startColor' value='#ff0000'><input type='color' class='startColor' value='#ff0095'><input type='color' class='startColor' value='#ff00d4'><br>
             Colores Finales: &nbsp;&nbsp;<input type='color' class='endColor' value='#6600ff'><input type='color' class='endColor' value='#1e00ff'><input type='color' class='endColor' value='#007BFF'><br>
-            Lento <input class='speed' type='range' name='speed' min='1000' max='10000' step='50' value='0.0025'>Rápido<br>
+            Rápido <input class='speed' type='range' name='speed' min='1000' max='10000' step='50' value='0.0025'>Lento<br>
             <button type='button' onclick='pingpongSections();'>Cambiar Color</button>
         </form>
 
@@ -82,6 +82,10 @@
             $(`#${section}`).slideDown();
         }
         function rainbowCycleAll(){
+            $('button').attr('disabled', 'true');
+            setTimeout(() => {
+                $('button').removeAttr('disabled');
+            },2500);
             funName = 'rainbowCycle';
             sectionOrder = 'backToFront';
             brightness = $($('.brightness')[0]).val();
@@ -97,6 +101,10 @@
             console.log(dataToSend);
         }
         function rainbowCycle(){
+            $('button').attr('disabled', 'true');
+            setTimeout(() => {
+                $('button').removeAttr('disabled');
+            },2500);
             funName = 'rainbowCycle';
             sectionOrder = $($('.sectionOrder')[0]).val();
             brightness = $($('.brightness')[1]).val();
@@ -112,6 +120,10 @@
             console.log(dataToSend);
         }
         function color(){
+            $('button').attr('disabled', 'true');
+            setTimeout(() => {
+                $('button').removeAttr('disabled');
+            },2500);
             funName = 'colorAll';
             sectionOrder = 'backToFront';
             startColor = hexToRgb($($('.startColor')[0]).val());
@@ -127,6 +139,10 @@
             console.log(dataToSend);
         }
         function colorSections(){
+            $('button').attr('disabled', 'true');
+            setTimeout(() => {
+                $('button').removeAttr('disabled');
+            },2500);
             funName = 'color';
             sectionOrder = $($('.sectionOrder')[1]).val();
             startColor = [hexToRgb($($('.startColor')[1]).val()),hexToRgb($($('.startColor')[2]).val()),hexToRgb($($('.startColor')[3]).val())];
@@ -142,6 +158,10 @@
             console.log(dataToSend);
         }
         function pingpong(){
+            $('button').attr('disabled', 'true');
+            setTimeout(() => {
+                $('button').removeAttr('disabled');
+            },2500);
             funName = 'pingpongAll';
             sectionOrder = 'backToFront';
             startColor = [hexToRgb($($('.startColor')[4]).val())];
@@ -159,6 +179,10 @@
             console.log(dataToSend);
         }
         function pingpongSections(){
+            $('button').attr('disabled', 'true');
+            setTimeout(() => {
+                $('button').removeAttr('disabled');
+            },2500);
             funName = 'pingpongSections';
             sectionOrder = $($('.sectionOrder')[2]).val();
             startColor = [hexToRgb($($('.startColor')[5]).val()),hexToRgb($($('.startColor')[6]).val()),hexToRgb($($('.startColor')[7]).val())];

@@ -34,7 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
-  console.log(updateColor);
   arguments = brains.toCallAttributes(updateColor);
   daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
   console.log(daniColorCaja);
@@ -112,7 +111,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(81, ()=>{
+app.listen(80, ()=>{
   console.log("started");
 })
 
