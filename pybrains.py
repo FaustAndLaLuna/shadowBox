@@ -42,9 +42,9 @@ def applyContactResponse():
     global lastIDContact
     global timesWaitedContact
     try:
-        print(host+contactRoute)
         response = requests.get(url=host+contactRoute)
         contactObj = response.json()
+        print(response)
         currID = contactObj['currID']
         isActive = contactObj['isActive']
         timesWaitedContact %= 450
