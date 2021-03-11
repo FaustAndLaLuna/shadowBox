@@ -46,6 +46,7 @@ def applyContactResponse():
         currID = contactObj['currID']
         isActive = contactObj['isActive']
         if isActive:
+            print(timesWaitedContact)
             timesWaitedContact %= 450
             if timesWaitedContact != 0:
                 timesWaitedContact += 1
