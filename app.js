@@ -58,6 +58,10 @@ app.get('/daniToEd', (request, response) => {
   console.log(daniToEd);
 });
 
+app.get('/daniToEdContact', (request, response) => {
+  response.json(daniToEd)
+});
+
 app.get('/edAcknowledge', (request, response) => {
   daniToEd.isActive = false;
   response.json(daniToEd);
@@ -68,6 +72,10 @@ app.get('/edToDani', (request, response) => {
   edToDani.currID = uuidv4();
   response.json(edToDani);
   console.log(edToDani);
+});
+
+app.get('/edToDaniContact', (request, response) => {
+  response.json(edToDani)
 });
 
 app.get('/daniAcknowledge', (request, response) => {

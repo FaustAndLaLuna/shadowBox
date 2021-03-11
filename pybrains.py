@@ -2,7 +2,7 @@ import requests, json, time, os
 
 host = 'http://10.0.1.9:81'
 colorCheckRoute = '/updateDaniBox'
-contactRoute = '/edToDani'
+contactRoute = '/edToDaniContact'
 
 lastIDColor = None
 lastIDContact = None
@@ -42,6 +42,7 @@ def applyContactResponse():
     global lastIDContact
     global timesWaitedContact
     try:
+        print(host+contactRoute)
         response = requests.get(url=host+contactRoute)
         contactObj = response.json()
         currID = contactObj['currID']
