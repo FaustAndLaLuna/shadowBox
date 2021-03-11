@@ -35,7 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/updateDaniBox', (request, response) => {
   updateColor = request.body;
-  console.log(updateColor);
   if(typeof (updateColor) == 'undefined')
     return;
   if(typeof (updateColor.brightness) == 'undefined')
@@ -46,7 +45,7 @@ app.post('/updateDaniBox', (request, response) => {
     return;
   arguments = brains.toCallAttributes(updateColor);
   app.locals.daniColorCaja = {'arguments':arguments,'currID':uuidv4()};
-  console.log(app.locals.daniColorCaja);
+  response.json(app.locals.daniColorCaja);
 });
 
 app.get('/updateDaniBox', (request, response) => {
@@ -56,15 +55,17 @@ app.get('/updateDaniBox', (request, response) => {
 
 app.post('/updateEdgarBox', (request, response) => {
   updateColor = request.body;
-  if(typeOf (updateColor) == 'undefined')
+  if(typeof (updateColor) == 'undefined')
     return;
-  if(typeOf (updateColor['brightness']) == 'undefined')
+  if(typeof (updateColor.brightness) == 'undefined')
     return;
-  if(typeOf (updateColor['funName']) == 'undefined')
+  if(typeof (updateColor.funName) == 'undefined')
+    return;
+  if(typeof (updateColor.sectionOrder) == 'undefined')
     return;
   arguments = brains.toCallAttributes(updateColor);
   app.locals.edgarColorCaja = {'arguments':arguments,'currID':uuidv4()};
-  console.log(app.locals.edgarColorCaja);
+  response.json(app.locals.edgarColorCaja);
 });
 
 app.get('/updateEdgarBox', (request, response) => {
@@ -81,6 +82,7 @@ app.get('/daniToEd', (request, response) => {
     to: '+525514377997',
     from: '+17149422514'
   }).then((message) => console.log(message));
+  response.end();
 });
 
 app.get('/daniToEdContact', (request, response) => {
@@ -96,7 +98,6 @@ app.get('/edToDani', (request, response) => {
   app.locals.edToDani.isActive = true;
   app.locals.edToDani.currID = uuidv4();
   response.json(app.locals.edToDani);
-  console.log(app.locals.edToDani);
 });
 
 app.get('/edToDaniContact', (request, response) => {
@@ -113,7 +114,6 @@ app.get('/daniAcknowledge', (request, response) => {
 */
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
@@ -126,9 +126,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// app.listen(80, ()=>{
-//   console.log("started");
-// })
 
 module.exports = app;
